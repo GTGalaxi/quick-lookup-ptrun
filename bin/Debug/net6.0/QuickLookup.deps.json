@@ -1,0 +1,81 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v6.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v6.0": {
+      "QuickLookup/1.0.0": {
+        "dependencies": {
+          "PowerToys.Common.UI": "0.53.1.0",
+          "PowerToys.ManagedCommon": "0.53.1.0",
+          "Wox.Infrastructure": "0.53.1.0",
+          "Wox.Plugin": "0.53.1.0"
+        },
+        "runtime": {
+          "QuickLookup.dll": {}
+        }
+      },
+      "PowerToys.Common.UI/0.53.1.0": {
+        "runtime": {
+          "PowerToys.Common.UI.dll": {
+            "assemblyVersion": "0.53.1.0",
+            "fileVersion": "0.53.1.0"
+          }
+        }
+      },
+      "PowerToys.ManagedCommon/0.53.1.0": {
+        "runtime": {
+          "PowerToys.ManagedCommon.dll": {
+            "assemblyVersion": "0.53.1.0",
+            "fileVersion": "0.53.1.0"
+          }
+        }
+      },
+      "Wox.Infrastructure/0.53.1.0": {
+        "runtime": {
+          "Wox.Infrastructure.dll": {
+            "assemblyVersion": "0.53.1.0",
+            "fileVersion": "0.53.1.0"
+          }
+        }
+      },
+      "Wox.Plugin/0.53.1.0": {
+        "runtime": {
+          "Wox.Plugin.dll": {
+            "assemblyVersion": "0.53.1.0",
+            "fileVersion": "0.53.1.0"
+          }
+        }
+      }
+    }
+  },
+  "libraries": {
+    "QuickLookup/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "PowerToys.Common.UI/0.53.1.0": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "PowerToys.ManagedCommon/0.53.1.0": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Wox.Infrastructure/0.53.1.0": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Wox.Plugin/0.53.1.0": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}
