@@ -8,7 +8,7 @@ To install the plugin, download the latest release from the [releases page](http
 
 
 ## Usage
-To use the plugin, simply open PowerToys Run by pressing Alt+Space and type the activation command `ql` followed by the IP address you want to lookup. The plugin will open the IP address in a new tab for each tool registered.
+To use the plugin, simply open PowerToys Run by pressing Alt+Space and type the activation command `ql` followed by the IP address you want to lookup. The plugin will open the IP address in a new tab in your default browser for each tool registered.
 
 ![image](https://user-images.githubusercontent.com/10473238/220019548-0c0cb81e-c401-4af7-95f6-7bec9220889f.png)
 
