@@ -4,7 +4,7 @@
   "Name": "Quick Lookup",
   "Description": "Quick Lookup IP Addresses",
   "Author": "gtgalaxi",
-  "Version": "1.0.0",
+  "Version": "1.1.0",
   "Language": "csharp",
   "Website": "https://boxxdin.com",
   "IcoPathDark": "img\\ql.dark.png",
