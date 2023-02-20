@@ -5,6 +5,7 @@
     <Company>Boxxdin</Company>
     <Authors>GTGalaxi</Authors>
     <TargetFramework>net6.0</TargetFramework>
+    <PreserveCompilationContext>false</PreserveCompilationContext>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>

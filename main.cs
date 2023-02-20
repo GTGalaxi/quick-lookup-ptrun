@@ -4,6 +4,7 @@ using ManagedCommon;
 using System.Collections.Generic;
 using Wox.Plugin;
 using System.Text.RegularExpressions;
+using System.Linq;
 
 namespace QuickLookup
 {
@@ -46,6 +47,18 @@ namespace QuickLookup
                                     .ToList();
             return Tools;
         }
+        public static string UpdateSubTitle(List<Tool> Tools) {
+            string subTitle = string.Join(", ", Tools.Where(t => t.Enabled).Select(t => t.Name));
+            if (!string.IsNullOrEmpty(subTitle))
+            {
+                int place = subTitle.LastIndexOf(", ");
+                if (place >= 0)
+                {
+                    subTitle = subTitle.Remove(place, 2).Insert(place, " & ");
+                }
+            }
+            return subTitle;
+        }
     }
     public class Main : IPlugin
     {
@@ -53,18 +66,20 @@ namespace QuickLookup
         private PluginInitContext ?Context { get; set; }
         public string Name => "Quick Lookup";
         public string Description => "Quick Lookup IP Addresses";
+        public string SubTitle => "Quick Lookup IP Addresses";
         public List<Tool> Tools { get; set; }
-        public List<string> ToolsEnabled => new List<string>() { "" };
 
         public List<Result> Query(Query query)
         {
+            Tools = QLConfig.ParseConfig();
+            string SubTitle = QLConfig.UpdateSubTitle(Tools);
+            
             var QueryIn = query.Search;
             List<Result> results = new List<Result>();
-            Tools = QLConfig.ParseConfig();
             results.Add(new Result
             {
                 Title = QueryIn,
-                SubTitle = "Test",
+                SubTitle = SubTitle,
                 IcoPath = IconPath,
                 Action = e =>
                 {
