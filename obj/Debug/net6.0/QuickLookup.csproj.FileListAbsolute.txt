@@ -1,6 +1,7 @@
 E:\Projects\quick-lookup-ptrun\bin\Debug\net6.0\img\ql.dark.png
 E:\Projects\quick-lookup-ptrun\bin\Debug\net6.0\img\ql.light.png
 E:\Projects\quick-lookup-ptrun\bin\Debug\net6.0\plugin.json
+E:\Projects\quick-lookup-ptrun\bin\Debug\net6.0\QuickLookup.dll.config
 E:\Projects\quick-lookup-ptrun\bin\Debug\net6.0\QuickLookup.deps.json
 E:\Projects\quick-lookup-ptrun\bin\Debug\net6.0\QuickLookup.dll
 E:\Projects\quick-lookup-ptrun\bin\Debug\net6.0\QuickLookup.pdb
@@ -9,6 +10,8 @@ E:\Projects\quick-lookup-ptrun\bin\Debug\net6.0\PowerToys.ManagedCommon.dll
 E:\Projects\quick-lookup-ptrun\bin\Debug\net6.0\Wox.Infrastructure.dll
 E:\Projects\quick-lookup-ptrun\bin\Debug\net6.0\Wox.Plugin.dll
 E:\Projects\quick-lookup-ptrun\obj\Debug\net6.0\QuickLookup.csproj.AssemblyReference.cache
+E:\Projects\quick-lookup-ptrun\obj\Debug\net6.0\QuickLookup.csproj.SuggestedBindingRedirects.cache
+E:\Projects\quick-lookup-ptrun\obj\Debug\net6.0\QuickLookup.dll.config
 E:\Projects\quick-lookup-ptrun\obj\Debug\net6.0\QuickLookup.GeneratedMSBuildEditorConfig.editorconfig
 E:\Projects\quick-lookup-ptrun\obj\Debug\net6.0\QuickLookup.AssemblyInfoInputs.cache
 E:\Projects\quick-lookup-ptrun\obj\Debug\net6.0\QuickLookup.AssemblyInfo.cs
@@ -18,3 +21,4 @@ E:\Projects\quick-lookup-ptrun\obj\Debug\net6.0\QuickLookup.dll
 E:\Projects\quick-lookup-ptrun\obj\Debug\net6.0\refint\QuickLookup.dll
 E:\Projects\quick-lookup-ptrun\obj\Debug\net6.0\QuickLookup.pdb
 E:\Projects\quick-lookup-ptrun\obj\Debug\net6.0\ref\QuickLookup.dll
+E:\Projects\quick-lookup-ptrun\bin\Debug\net6.0\tools.conf
