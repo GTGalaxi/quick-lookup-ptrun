@@ -1,6 +1,6 @@
 # Quick Lookup Plugin for PowerToys Run 
 
-![build-status](https://github.com/GTGalaxi/quick-lookup-ptrun/actions/workflows/dotnet.yml/badge.svg) <a href="https://github.com/GTGalaxi/quick-lookup-ptrun/releases">![GitHub release (latest by date)](https://img.shields.io/github/v/release/GTGalaxi/quick-lookup-ptrun)</a>
+![build-status](https://github.com/GTGalaxi/quick-lookup-ptrun/actions/workflows/dotnet.yml/badge.svg) <a href="https://github.com/GTGalaxi/quick-lookup-ptrun/releases">![GitHub release (latest by date including pre-releases)](https://img.shields.io/github/v/release/GTGalaxi/quick-lookup-ptrun?include_prereleases)</a>
 
 This plugin for [PowerToys Run](https://learn.microsoft.com/en-us/windows/powertoys/run) allows you to quickly search for an IP address, domain name, hash or any other data points in a list of Cyber Security tools. It's perfect for security analysts, penetration testers, or anyone else who needs to quickly lookup information when investigating artifacts or alerts.
 
