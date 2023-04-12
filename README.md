@@ -1,6 +1,8 @@
-# PowerToys Run Plugin for Quick IP Lookups
+# Quick Lookup Plugin for PowerToys Run 
 
-This plugin for [PowerToys Run](https://learn.microsoft.com/en-us/windows/powertoys/run) allows you to quickly search for an IP address in a list of Cyber Security tools. It's perfect for security analysts, penetration testers, or anyone else who needs to quickly lookup information on an IP address.
+![build-status](https://github.com/GTGalaxi/quick-lookup-ptrun/actions/workflows/dotnet.yml/badge.svg)   ![GitHub release (latest by date)](https://img.shields.io/github/v/release/GTGalaxi/quick-lookup-ptrun)
+
+This plugin for [PowerToys Run](https://learn.microsoft.com/en-us/windows/powertoys/run) allows you to quickly search for an IP address, domain name, hash or any other data points in a list of Cyber Security tools. It's perfect for security analysts, penetration testers, or anyone else who needs to quickly lookup information when investigating artifacts or alerts.
 
 ## Installation
 
@@ -10,7 +12,7 @@ To install the plugin, download the latest release from the [releases page](http
 
 ## Usage
 
-To use the plugin, simply open PowerToys Run by pressing Alt+Space and type the activation command `ql` followed by the IP address you want to lookup. The plugin will open the IP address in a new tab in your default browser for each tool registered.
+To use the plugin, simply open PowerToys Run by pressing Alt+Space and type the activation command `ql` followed by the tool category and the data you want to lookup. The plugin will open the data searched in a new tab in your default browser for each tool registered with that category.
 
 ![QuickLookup](https://user-images.githubusercontent.com/10473238/227844315-0a865672-9eb3-4f35-afc5-d6c196fd009d.gif)
 
@@ -18,21 +20,25 @@ To use the plugin, simply open PowerToys Run by pressing Alt+Space and type the 
 
 This plugin currently comes default with the following tools:
 
-* Shodan
-* GreyNoise
-* VirusTotal
-* Censys
-* CriminalIP
+* Shodan - IP Lookup
+* GreyNoise - IP Lookup
+* VirusTotal - IP, Domain & Hash Lookup
+* Censys - IP & Domain Lookup
+* CriminalIP - IP & Domain Lookup
+* Whois - Whois Lookup
+* EasyCounter - Whois Lookup
+* Whoisology - Whois Lookup
 
 ## Configuration
 
 By default, the plugin will use the precofigured tools listed above. You can modify these settings by editing the `tools.conf` file in the plugin folder.
-The format for the configuration file follows the below standard
+The format for the configuration file follows the below standard:
 
 ```ini
 [TOOL]                                  ; Section identifier for a new tool
 NAME=Shodan                             ; Name of the tool
 URL=https://www.shodan.io/host/{0}      ; URL of the tool. {0} will be replaced with the user input from PowerToys Run
+CATEGORIES=ip                           ; Comma-seperated list of Categories the tool can work with
 ENABLED=1                               ; Boolean value of 0 or 1 to toggle the active state of the tool
 ```
 
