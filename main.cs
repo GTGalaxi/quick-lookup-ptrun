@@ -1,6 +1,9 @@
 using ManagedCommon;
 using Wox.Plugin;
 using System.Text.RegularExpressions;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
 
 namespace QuickLookup
 {
@@ -142,12 +145,6 @@ namespace QuickLookup
                     IcoPath = IconPath,
                     Action = e =>
                     {
-                        foreach (var Tool in Tools)
-                        {
-                            if (Tool.Enabled) {
-                                System.Diagnostics.Process.Start("explorer", string.Format(Tool.URL, QueryIn));
-                            }
-                        }
                         return false;
                     }
                 });
