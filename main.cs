@@ -1,10 +1,6 @@
-using System;
-using System.IO;
 using ManagedCommon;
-using System.Collections.Generic;
 using Wox.Plugin;
 using System.Text.RegularExpressions;
-using System.Linq;
 
 namespace QuickLookup
 {
@@ -12,11 +8,13 @@ namespace QuickLookup
     {
         private string name;
         private string url;
+        private string[] categories;
         private bool enabled;
 
-        public Tool(string name, string url, bool enabled) {
+        public Tool(string name, string url, string[] categories, bool enabled) {
             this.name = name;
             this.url = url;
+            this.categories = categories;
             this.enabled = enabled;
         }
 
@@ -30,6 +28,11 @@ namespace QuickLookup
             set { url = value; }
         }
 
+        public string[] Categories {
+            get { return categories;}
+            set { categories = value; }
+        }
+
         public bool Enabled {
             get { return enabled;}
             set { enabled = value; }
@@ -41,14 +44,17 @@ namespace QuickLookup
         public static List<Tool> ParseConfig() {
             string config = File.ReadAllText("modules/launcher/Plugins/QuickLookup/tools.conf");
             config = config.Replace("\r\n", "\n");
-            List<Tool> Tools  = Regex.Matches(config, @"(?:\w*=([^\n]*)\n?){3}", RegexOptions.Multiline)
+            List<Tool> Tools  = Regex.Matches(config, @"(?:\w*=([^\n]*)\n?){4}", RegexOptions.Multiline)
                                     .Cast<Match>()
-                                    .Select(tool => new Tool(tool.Groups[1].Captures[0].Value, tool.Groups[1].Captures[1].Value, tool.Groups[1].Captures[2].Value == "1" ? true : false))
+                                    .Select(tool => new Tool(tool.Groups[1].Captures[0].Value, tool.Groups[1].Captures[1].Value, tool.Groups[1].Captures[2].Value.ToLower().Split(","), tool.Groups[1].Captures[3].Value == "1" ? true : false))
                                     .ToList();
             return Tools;
         }
-        public static string UpdateSubTitle(List<Tool> Tools) {
-            string subTitle = string.Join(", ", Tools.Where(t => t.Enabled).Select(t => t.Name));
+        public static string UpdateSubTitle(List<Tool> Tools, string Category) {
+            string subTitle = string.Join(", ", Tools.Where(t => t.Categories.Contains(Category)).Where(t => t.Enabled).Select(t => t.Name));
+            if (subTitle == "") {
+                return "No tools found in category!";
+            }
             if (!string.IsNullOrEmpty(subTitle))
             {
                 int place = subTitle.LastIndexOf(", ");
@@ -59,39 +65,93 @@ namespace QuickLookup
             }
             return subTitle;
         }
+        public static string FilterCategories(List<Tool> Tools, string Category) {
+            string subTitle = string.Join(", ", GetCategories(Tools).Where(c => (c.Contains(Category.ToLower()) | Category == ""))).ToUpper();
+            if (subTitle == "") {
+                return "No matching Categories!";
+            }
+            if (!string.IsNullOrEmpty(subTitle))
+            {
+                int place = subTitle.LastIndexOf(", ");
+                if (place >= 0)
+                {
+                    subTitle = subTitle.Remove(place, 2).Insert(place, " & ");
+                }
+            }
+            return subTitle;
+        }
+        
+        public static string[] GetCategories(List<Tool> Tools) {
+            List<string> categories = new List<string>();
+            string[][] t = Tools.Select(t => t.Categories).ToArray();
+            foreach (var cats in t) {
+                foreach (var cat in cats) {
+                    if (!categories.Contains(cat)) {
+                        categories.Add(cat);
+                    }
+                }
+            };
+            return categories.ToArray();
+        }
     }
     public class Main : IPlugin
     {
         private string ?IconPath { get; set; }
         private PluginInitContext ?Context { get; set; }
         public string Name => "Quick Lookup";
-        public string Description => "Quick Lookup IP Addresses";
-        public string SubTitle => "Quick Lookup IP Addresses";
-        public List<Tool> Tools { get; set; }
+        public string Description => "Quick Lookup";
+        public string SubTitle = "Quick Lookup";
+        public List<Tool> Tools { get; set; } = new List<Tool>();
 
         public List<Result> Query(Query query)
         {
             Tools = QLConfig.ParseConfig();
-            string SubTitle = QLConfig.UpdateSubTitle(Tools);
+
+            List<Result> results = new List<Result>();
             
             var QueryIn = query.Search;
-            List<Result> results = new List<Result>();
-            results.Add(new Result
-            {
-                Title = QueryIn,
-                SubTitle = SubTitle,
-                IcoPath = IconPath,
-                Action = e =>
+            var QuerySplit = QueryIn.Split(" ");
+            if (QuerySplit.Length >= 2) {
+                var Category = QuerySplit[0].ToLower();
+                var Input = QuerySplit[1];
+
+                SubTitle = "Quick Lookup "+ Category.ToUpper() + " using: " + QLConfig.UpdateSubTitle(Tools, Category);
+                results.Add(new Result
                 {
-                    foreach (var Tool in Tools)
+                    Title = Input,
+                    SubTitle = SubTitle,
+                    IcoPath = IconPath,
+                    Action = e =>
                     {
-                        if (Tool.Enabled) {
-                            System.Diagnostics.Process.Start("explorer", string.Format(Tool.URL, QueryIn));
+                        foreach (var Tool in Tools.Where(t => t.Categories.Contains(Category)))
+                        {
+                            if (Tool.Enabled) {
+                                System.Diagnostics.Process.Start("explorer", string.Format(Tool.URL, Input));
+                            }
                         }
+                        return false;
                     }
-                    return false;
-                }
-            });
+                });
+            }
+            else if (QuerySplit.Length <= 1) {
+                SubTitle = "Categories: " + QLConfig.FilterCategories(Tools, QueryIn);
+                results.Add(new Result
+                {
+                    Title = QueryIn,
+                    SubTitle = SubTitle,
+                    IcoPath = IconPath,
+                    Action = e =>
+                    {
+                        foreach (var Tool in Tools)
+                        {
+                            if (Tool.Enabled) {
+                                System.Diagnostics.Process.Start("explorer", string.Format(Tool.URL, QueryIn));
+                            }
+                        }
+                        return false;
+                    }
+                });
+            }
             return results;
         }
 
