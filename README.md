@@ -37,7 +37,7 @@ The format for the configuration file follows the below standard:
 ```ini
 [TOOL]                                  ; Section identifier for a new tool
 NAME=Shodan                             ; Name of the tool
-URL=https://www.shodan.io/host/{0}      ; URL of the tool. {0} will be replaced with the user input from PowerToys Run
+URL="https://www.shodan.io/host/{0}"    ; URL of the tool. {0} will be replaced with the user input from PowerToys Run
 CATEGORIES=ip                           ; Comma-seperated list of Categories the tool can work with
 ENABLED=1                               ; Boolean value of 0 or 1 to toggle the active state of the tool
 ```
