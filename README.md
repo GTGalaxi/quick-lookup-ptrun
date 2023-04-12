@@ -12,7 +12,11 @@ To install the plugin, download the latest release from the [releases page](http
 
 ## Usage
 
-To use the plugin, simply open PowerToys Run by pressing Alt+Space and type the activation command `ql` followed by the tool category and the data you want to lookup. The plugin will open the data searched in a new tab in your default browser for each tool registered with that category.
+To use the plugin, simply open PowerToys Run by pressing Alt+Space and type the activation command `ql` followed by the tool category and the data you want to lookup.
+
+![ptr-v1 2 0](https://user-images.githubusercontent.com/10473238/231605857-2427613f-7206-4899-8d82-3c660cecfd98.gif)
+
+The plugin will open the data searched in a new tab in your default browser for each tool registered with that category.
 
 ![QuickLookup](https://user-images.githubusercontent.com/10473238/227844315-0a865672-9eb3-4f35-afc5-d6c196fd009d.gif)
 
@@ -33,6 +37,8 @@ This plugin currently comes default with the following tools:
 
 By default, the plugin will use the precofigured tools listed above. You can modify these settings by editing the `tools.conf` file in the plugin folder.
 The format for the configuration file follows the below standard:
+
+**NOTE: The order of properties per tool is important as the parser is just simple regex! This will be implemented properly in a later version.**
 
 ```ini
 [TOOL]                                  ; Section identifier for a new tool
