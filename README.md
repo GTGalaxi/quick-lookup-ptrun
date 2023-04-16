@@ -6,7 +6,14 @@ This plugin for [PowerToys Run](https://learn.microsoft.com/en-us/windows/powert
 
 ## Installation
 
-To install the plugin, download the latest release from the [releases page](https://github.com/GTGalaxi/quick-lookup-ptrun/releases) and extract the contents of the ZIP file to a folder called QuickLookup in the PowerToys Run Plugins foler (e.g. `C:\Program Files\PowerToys\modules\launcher\Plugins`). Then, open/restart PowerToys and you should see the QuickLookup plugin loaded under the Run tool.
+To install the plugin:
+
+- Navigate to your Powertoys Run Plugin folder
+  - **For machine wide install of PowerToys:** `C:\Program Files\PowerToys\modules\launcher\Plugins`
+  - **For per user install of PowerToys:** `C:\Users\<yourusername>\AppData\Local\PowerToys\modules\launcher\Plugins`
+- Create a new folder called QuickLookup
+- Extract the contents of the zip file into the folder you just created
+- Restart PowerToys and the plugin should be loaded under the Run tool settings and work when promted with "ql"
 
 ![image](https://user-images.githubusercontent.com/10473238/220018777-8bed80bd-dcfa-4ddf-adeb-17d6b9dc93f4.png)
 

@@ -1,9 +1,6 @@
 using ManagedCommon;
 using Wox.Plugin;
 using System.Text.RegularExpressions;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
 
 namespace QuickLookup
 {

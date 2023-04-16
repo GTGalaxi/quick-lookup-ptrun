@@ -1,4 +1,6 @@
 bin/
 obj/
 .vscode/
+build/
 *.code-workspace
+notes.md
