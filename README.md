@@ -15,7 +15,7 @@ To install the plugin:
 - Extract the contents of the zip file into the folder you just created
 - Restart PowerToys and the plugin should be loaded under the Run tool settings and work when promted with "ql"
 
-![image](https://user-images.githubusercontent.com/10473238/220018777-8bed80bd-dcfa-4ddf-adeb-17d6b9dc93f4.png)
+![ptr-ql](https://user-images.githubusercontent.com/10473238/232273294-1e9d4fec-fb8a-45e2-8780-0214aa6ef528.png)
 
 ## Usage
 

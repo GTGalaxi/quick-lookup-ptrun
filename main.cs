@@ -1,6 +1,8 @@
 using ManagedCommon;
 using Wox.Plugin;
 using System.Text.RegularExpressions;
+using System.Text.Json;
+using System.Diagnostics;
 
 namespace QuickLookup
 {
@@ -41,15 +43,48 @@ namespace QuickLookup
     }
     public static class QLConfig 
     {
-        public static List<Tool> ParseConfig() {
-            string config = File.ReadAllText("modules/launcher/Plugins/QuickLookup/tools.conf");
-            config = config.Replace("\r\n", "\n");
-            List<Tool> Tools  = Regex.Matches(config, @"(?:\w*=([^\n]*)\n?){4}", RegexOptions.Multiline)
-                                    .Cast<Match>()
-                                    .Select(tool => new Tool(tool.Groups[1].Captures[0].Value, tool.Groups[1].Captures[1].Value, tool.Groups[1].Captures[2].Value.ToLower().Split(","), tool.Groups[1].Captures[3].Value == "1" ? true : false))
-                                    .ToList();
+        public static List<Tool>? ParseConfig(bool force = false) {
+            List<Tool>? Tools;
+            if (File.Exists("modules/launcher/Plugins/QuickLookup/tools.json") && force == false) {
+                try {
+                    string config = File.ReadAllText("modules/launcher/Plugins/QuickLookup/tools.json");
+                    Tools = JsonSerializer.Deserialize<List<Tool>>(config);
+                } catch {
+                    Tools = null;
+                }
+            } else if (File.Exists("modules/launcher/Plugins/QuickLookup/tools.conf")) {
+                string config = File.ReadAllText("modules/launcher/Plugins/QuickLookup/tools.conf");
+                config = config.Replace("\r\n", "\n");
+                Tools  = Regex.Matches(config, @"(?:\w*=([^\n]*)\n?){4}", RegexOptions.Multiline)
+                                        .Cast<Match>()
+                                        .Select(tool => new Tool(tool.Groups[1].Captures[0].Value, tool.Groups[1].Captures[1].Value.Replace("\"", ""), tool.Groups[1].Captures[2].Value.ToLower().Split(","), tool.Groups[1].Captures[3].Value == "1" ? true : false))
+                                        .ToList();
+            } else {
+                Tools = null;
+            }
             return Tools;
         }
+
+        public static bool ConvertConfigToJSON() {
+            // If tools.json exists, do not convert. Already converted or custom config in place.
+            if (File.Exists("modules/launcher/Plugins/QuickLookup/tools.json")) {
+                return true;
+            }
+            // Parse tools.conf and convert to JSON
+            List<Tool>? Tools = ParseConfig(true);
+            if (Tools is null) {
+                return false;
+            } 
+
+            try {
+                string jsonString = JsonSerializer.Serialize(Tools, new JsonSerializerOptions { WriteIndented = true });
+                File.WriteAllText("modules/launcher/Plugins/QuickLookup/tools.json", Regex.Unescape(jsonString));
+            } catch {
+                return false;
+            }
+            return true;
+        }
+        
         public static string UpdateSubTitle(List<Tool> Tools, string Category) {
             string subTitle = string.Join(", ", Tools.Where(t => t.Categories.Contains(Category)).Where(t => t.Enabled).Select(t => t.Name));
             if (subTitle == "") {
@@ -96,18 +131,31 @@ namespace QuickLookup
     }
     public class Main : IPlugin
     {
-        private string ?IconPath { get; set; }
-        private PluginInitContext ?Context { get; set; }
+        private string? IconPath { get; set; }
+        private PluginInitContext? Context { get; set; }
         public string Name => "Quick Lookup";
         public string Description => "Quick Lookup";
         public string SubTitle = "Quick Lookup";
-        public List<Tool> Tools { get; set; } = new List<Tool>();
+        public List<Tool>? Tools { get; set; }
 
         public List<Result> Query(Query query)
         {
             Tools = QLConfig.ParseConfig();
-
             List<Result> results = new List<Result>();
+            
+            if (Tools is null) {
+                results.Add(new Result
+                {
+                    Title = "ERROR",
+                    SubTitle = "Error Parsing Tools or no Tools found!",
+                    IcoPath = IconPath,
+                    Action = e =>
+                    {
+                        return false;
+                    }
+                });
+                return results;
+            }
             
             var QueryIn = query.Search;
             var QuerySplit = QueryIn.Split(" ");
@@ -126,7 +174,7 @@ namespace QuickLookup
                         foreach (var Tool in Tools.Where(t => t.Categories.Contains(Category)))
                         {
                             if (Tool.Enabled) {
-                                System.Diagnostics.Process.Start("explorer", string.Format(Tool.URL, Input));
+                                Process.Start(new ProcessStartInfo(string.Format(Tool.URL, Input)) { UseShellExecute = true });
                             }
                         }
                         return false;
@@ -154,24 +202,16 @@ namespace QuickLookup
             Context = context;
             Context.API.ThemeChanged += OnThemeChanged;
             UpdateIconPath(Context.API.GetCurrentTheme());
+            QLConfig.ConvertConfigToJSON();
             Tools = QLConfig.ParseConfig();
         }
 
         private void UpdateIconPath(Theme theme)
         {
-            if (theme == Theme.Light || theme == Theme.HighContrastWhite)
-            {
-                IconPath = "img/ql.light.png"; // Light Theme
-            }
-            else
-            {
-                IconPath = "img/ql.dark.png"; // Dark Theme
-            }
+            if (theme == Theme.Light || theme == Theme.HighContrastWhite) { IconPath = "img/ql.light.png"; } // Light Theme 
+            else { IconPath = "img/ql.dark.png"; } // Dark Theme 
         }
 
-        private void OnThemeChanged(Theme currentTheme, Theme newTheme)
-        {
-            UpdateIconPath(newTheme);
-        }
+        private void OnThemeChanged(Theme currentTheme, Theme newTheme) { UpdateIconPath(newTheme); }
     }
 }
