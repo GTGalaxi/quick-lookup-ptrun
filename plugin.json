@@ -4,9 +4,9 @@
   "Name": "Quick Lookup",
   "Description": "Quick Lookup IP Addresses, Domains, Whois Records, Hashes and more!",
   "Author": "gtgalaxi",
-  "Version": "1.2.1",
+  "Version": "1.3.0",
   "Language": "csharp",
-  "Website": "https://boxxdin.com",
+  "Website": "https://github.com/GTGalaxi/quick-lookup-ptrun",
   "IcoPathDark": "img\\ql.dark.png",
   "IcoPathLight": "img\\ql.light.png",
   "ExecuteFileName": "QuickLookup.dll"
