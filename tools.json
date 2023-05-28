@@ -1,0 +1,78 @@
+[
+  {
+    "Name": "Shodan",
+    "URL": "https://www.shodan.io/host/{0}",
+    "Categories": [
+      "ip"
+    ],
+    "Enabled": true
+  },
+  {
+    "Name": "GreyNoise",
+    "URL": "https://viz.greynoise.io/ip/{0}",
+    "Categories": [
+      "ip"
+    ],
+    "Enabled": true
+  },
+  {
+    "Name": "Spur",
+    "URL": "https://spur.us/app/context?q={0}",
+    "Categories": [
+      "ip"
+    ],
+    "Enabled": true
+  },
+  {
+    "Name": "VirusTotal",
+    "URL": "https://www.virustotal.com/gui/search/{0}",
+    "Categories": [
+      "ip",
+      "domain",
+      "hash"
+    ],
+    "Enabled": true
+  },
+  {
+    "Name": "Censys",
+    "URL": "https://search.censys.io/hosts/{0}",
+    "Categories": [
+      "ip",
+      "domain"
+    ],
+    "Enabled": true
+  },
+  {
+    "Name": "Criminal IP",
+    "URL": "https://www.criminalip.io/en/asset/search?query={0}",
+    "Categories": [
+      "ip",
+      "domain"
+    ],
+    "Enabled": true
+  },
+  {
+    "Name": "Whois",
+    "URL": "https://www.whois.com/whois/{0}",
+    "Categories": [
+      "whois"
+    ],
+    "Enabled": true
+  },
+  {
+    "Name": "EasyCounter",
+    "URL": "https://whois.easycounter.com/{0}",
+    "Categories": [
+      "whois"
+    ],
+    "Enabled": true
+  },
+  {
+    "Name": "Whoisology",
+    "URL": "https://whoisology.com/{0}",
+    "Categories": [
+      "whois"
+    ],
+    "Enabled": true
+  }
+]

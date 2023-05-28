@@ -1,11 +1,13 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <Version>1.2.1</Version>
-    <Company>Boxxdin</Company>
+    <Version>1.3.0</Version>
+    <Company>AusSec</Company>
     <Authors>GTGalaxi</Authors>
     <TargetFramework>net6.0</TargetFramework>
     <PreserveCompilationContext>false</PreserveCompilationContext>
+    <Product>Quick Lookup - Power Toys Plugin</Product>
+    <Copyright>https://github.com/GTGalaxi/quick-lookup-ptrun</Copyright>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -33,7 +35,7 @@
     <None Update="plugin.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="tools.conf">
+    <None Update="tools.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
