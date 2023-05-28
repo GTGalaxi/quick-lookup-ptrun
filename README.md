@@ -53,12 +53,15 @@ The format for the configuration file follows the below standard:
 
 ```json
 {
-    "Name": "Shodan",                           // Name of the tool
-    "URL": "https://www.shodan.io/host/{0}",    // URL of the tool. {0} will be replaced with the user input from PowerToys Run
-    "Categories": ["ip"],                       // Array of Categories the tool can work with
-    "Enabled": true                             // Boolean to enable or disable tool
-},
+    "Name": "VirusTotal",
+    "URL": "https://www.virustotal.com/gui/search/{0}",
+    "Categories": [ "ip", "domain", "hash"],
+    "Enabled": true
+}
 ```
+
+In the URL, `{0}` will be replace with the search input. As such, only sites that work based on URL data *(GET Requests)* are supported for now.\
+For example, `https://www.virustotal.com/gui/search/{0}` would become `https://www.virustotal.com/gui/search/1.1.1.1`
 
 <!-- ```ini
 [TOOL]                                  ; Section identifier for a new tool
