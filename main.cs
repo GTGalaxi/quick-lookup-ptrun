@@ -52,8 +52,8 @@ namespace QuickLookup
                 } else if (File.Exists(pluginDir+"\\tools.conf")) {
                         string config = File.ReadAllText(pluginDir+"\\tools.conf");
                         config = config.Replace("\r\n", "\n");
-                        tools  = (Tools)Regex.Matches(config, @"(?:\w*=([^\n]*)\n?){4}", RegexOptions.Multiline).Cast<Match>()
-                            .Select(tool => {var cTool = tool.Groups[1].Captures; return new Tool(cTool[0].Value, cTool[1].Value.Replace("\"", ""), cTool[2].Value.ToLower().Split(","), cTool[3].Value == "1" ? true : false);});
+                        tools = Regex.Matches(config, @"(?:\w*=([^\n]*)\n?){4}", RegexOptions.Multiline).Cast<Match>()
+                            .Select(tool => {var cTool = tool.Groups[1].Captures; return new Tool(cTool[0].Value, cTool[1].Value.Replace("\"", ""), cTool[2].Value.ToLower().Split(","), cTool[3].Value == "1" ? true : false);}).ToList();
                 }
             } catch(Exception e) { Wox.Plugin.Logger.Log.Exception(e.Message, e, typeof(QLConfig), "ParseConfig"); tools = Tools.DefaultTools(); }
             return tools;
