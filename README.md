@@ -8,9 +8,11 @@ This plugin for [PowerToys Run](https://learn.microsoft.com/en-us/windows/powert
 
 > **NOTE: As of version 0.72.0 or 0.73.0 (Not 100% sure as the release notes don't mention this), the directory for Powertoys Run plugins was changed!**
 >
-> The plugin directory was originally:
-> - **For machine wide install of PowerToys:** `C:\Program Files\PowerToys\modules\launcher\Plugins` for machine wide installs
-> - **For per user install of PowerToys:** `C:\Users\<yourusername>\AppData\Local\PowerToys\modules\launcher\Plugins` for per user installs.
+> If you already installed this or another plugin and it recently stopped working this may be why. You will need to move the plugin(s) from the old directory to the new one.
+> 
+> The old plugin directory was:
+> - **For machine wide install of PowerToys:** `C:\Program Files\PowerToys\modules\launcher\Plugins`
+> - **For per user install of PowerToys:** `C:\Users\<yourusername>\AppData\Local\PowerToys\modules\launcher\Plugins`
 
 To install the plugin:
 
