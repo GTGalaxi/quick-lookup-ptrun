@@ -82,6 +82,8 @@ namespace QuickLookup
     }
     public class Main : IPlugin
     {
+        public static string PluginID => "11EB1E4568DF43E0AE80AE1E46A052B0";
+
         private string IconPath { get; set; } = "img/ql.dark.png";
         public static PluginInitContext Context { get; set; } = null!;
         public string Name => "Quick Lookup";

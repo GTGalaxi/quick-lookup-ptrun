@@ -1,6 +1,6 @@
 # Quick Lookup Plugin for PowerToys Run
 
-![build-status](https://github.com/GTGalaxi/quick-lookup-ptrun/actions/workflows/dotnet.yml/badge.svg) <a href="https://github.com/GTGalaxi/quick-lookup-ptrun/releases">![GitHub release (latest by date including pre-releases)](https://img.shields.io/github/v/release/GTGalaxi/quick-lookup-ptrun?include_prereleases)</a>
+![build-status](https://github.com/GTGalaxi/quick-lookup-ptrun/actions/workflows/dotnet.yml/badge.svg) [![GitHub release (latest by date including pre-releases)](https://img.shields.io/github/v/release/GTGalaxi/quick-lookup-ptrun?include_prereleases)](https://github.com/GTGalaxi/quick-lookup-ptrun/releases)
 
 This plugin for [PowerToys Run](https://learn.microsoft.com/en-us/windows/powertoys/run) allows you to quickly search for an IP address, domain name, hash or any other data points in a list of Cyber Security tools. It's perfect for security analysts, penetration testers, or anyone else who needs to quickly lookup information when investigating artifacts or alerts.
 
@@ -9,8 +9,9 @@ This plugin for [PowerToys Run](https://learn.microsoft.com/en-us/windows/powert
 > **NOTE: As of version 0.72.0 or 0.73.0 (Not 100% sure as the release notes don't mention this), the directory for Powertoys Run plugins was changed!**
 >
 > If you already installed this or another plugin and it recently stopped working this may be why. You will need to move the plugin(s) from the old directory to the new one.
-> 
+>
 > The old plugin directory was:
+>
 > - **For machine wide install of PowerToys:** `C:\Program Files\PowerToys\modules\launcher\Plugins`
 > - **For per user install of PowerToys:** `C:\Users\<yourusername>\AppData\Local\PowerToys\modules\launcher\Plugins`
 
