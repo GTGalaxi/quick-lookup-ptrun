@@ -114,7 +114,7 @@ namespace QuickLookup
                 });
                 return results;
             }
-            var QuerySplit = query.Search.Split(" ");
+            var QuerySplit = query.Search.Split(" ", 2);
             string category = QuerySplit[0].ToLower();
             (string categories, int count) = QLConfig.FilterCategories(ToolList, category).Subtitle(true);
             if (count == 1 && category == categories.ToLower()) {
