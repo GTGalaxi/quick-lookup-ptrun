@@ -6,7 +6,7 @@ This plugin for [PowerToys Run](https://learn.microsoft.com/en-us/windows/powert
 
 ## Installation
 
-> **NOTE: As of version 0.72.0 or 0.73.0 (Not 100% sure as the release notes don't mention this), the directory for Powertoys Run plugins was changed!**
+> **NOTE: As of Power Toys Run v0.72.0 or v0.73.0 (Not 100% sure as the release notes don't mention this), the directory for Powertoys Run plugins was changed!**
 >
 > If you already installed this or another plugin and it recently stopped working this may be why. You will need to move the plugin(s) from the old directory to the new one.
 >
