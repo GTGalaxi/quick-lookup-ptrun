@@ -3,7 +3,8 @@
     "Name": "Shodan",
     "URL": "https://www.shodan.io/search?query={0}",
     "Categories": [
-      "ip"
+      "ip",
+      "domain"
     ],
     "Enabled": true
   },

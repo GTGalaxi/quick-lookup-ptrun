@@ -40,9 +40,10 @@ The plugin will open the data searched in a new tab in your default browser for 
 
 This plugin currently comes default with the following tools:
 
-- [Shodan](https://www.shodan.io) - IP Lookup
-- [GreyNoise](https://viz.greynoise.io) - IP Lookup
+- [Shodan](https://www.shodan.io) - IP & Domain Lookup
 - [Spur](https://spur.us) - IP Lookup
+- [IPinfo](https://ipinfo.io) - IP Lookup
+- [GreyNoise](https://viz.greynoise.io) - IP & Domain Lookup
 - [VirusTotal](https://www.virustotal.com) - IP, Domain & Hash Lookup
 - [Censys](https://search.censys.io) - IP & Domain Lookup
 - [CriminalIP](https://www.criminalip.io) - IP & Domain Lookup
