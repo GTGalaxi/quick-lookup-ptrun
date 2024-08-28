@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <Version>1.3.1</Version>
+    <Version>1.3.3</Version>
     <Company>AusSec</Company>
     <Authors>GTGalaxi</Authors>
     <TargetFramework>net6.0</TargetFramework>
