@@ -1,14 +1,14 @@
 [
   {
     "Name": "Shodan",
-    "URL": "https://www.shodan.io/host/{0}",
+    "URL": "https://www.shodan.io/search?query={0}",
     "Categories": [
       "ip"
     ],
     "Enabled": true
   },
   {
-    "Name": "GreyNoise",
+    "Name": "GreyNoise (IP)",
     "URL": "https://viz.greynoise.io/ip/{0}",
     "Categories": [
       "ip"
@@ -16,8 +16,24 @@
     "Enabled": true
   },
   {
+    "Name": "GreyNoise (Domain)",
+    "URL": "https://viz.greynoise.io/query/{0}",
+    "Categories": [
+      "domain"
+    ],
+    "Enabled": true
+  },
+  {
     "Name": "Spur",
     "URL": "https://spur.us/app/context?q={0}",
+    "Categories": [
+      "ip"
+    ],
+    "Enabled": true
+  },
+  {
+    "Name": "IPinfo",
+    "URL": "https://ipinfo.io/{0}",
     "Categories": [
       "ip"
     ],
@@ -35,7 +51,7 @@
   },
   {
     "Name": "Censys",
-    "URL": "https://search.censys.io/hosts/{0}",
+    "URL": "https://search.censys.io/search?resource=hosts&q={0}",
     "Categories": [
       "ip",
       "domain"
