@@ -20,8 +20,7 @@ To install the plugin:
 - Navigate to your Powertoys Run Plugin folder
   - **For machine wide install of PowerToys:** `C:\Program Files\PowerToys\RunPlugins`
   - **For per user install of PowerToys:** `C:\Users\<yourusername>\AppData\Local\PowerToys\RunPlugins`
-- Create a new folder called QuickLookup
-- Extract the contents of the zip file into the folder you just created
+- Extract the contents of the zip archive into a folder called QuickLookup and copy it to the plugins directory above
 - Restart PowerToys and the plugin should be loaded under the Run tool settings and work when promted with `ql`
 
 ![ptr-ql](https://user-images.githubusercontent.com/10473238/232273294-1e9d4fec-fb8a-45e2-8780-0214aa6ef528.png)
